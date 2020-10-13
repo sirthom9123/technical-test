@@ -9,15 +9,15 @@ Project (Weather API)
 As an API user I want to get min, max, average and median temperature and humidity for given city and period of time
 - Requirements:
 Use git for version control publish on GitHub or send us a compressed repo (I will set up a repository for each candidate) if making publicly available, please avoid using 'Yoyo Wallet' in repo name or description
-Functionality
-Create locally running RESTful web API;
-flask-rest-framework recommended, that accepts a request with 'city' and 'period' args;
-Fetches weather data for that location and period of time from some public API e.g. Yahoo! Weather;
-Stores the data in Local Postgres database (Simple Weather table to be setup in the models folder)
-Computes min, max, average and median temperature and humidity for that location and period and returns that to the user;
+- Functionality:
+- Create locally running RESTful web API;
+- flask-rest-framework recommended, that accepts a request with 'city' and 'period' args;
+- Fetches weather data for that location and period of time from some public API e.g. Yahoo! Weather;
+- Stores the data in Local Postgres database (Simple Weather table to be setup in the models folder)
+- Computes min, max, average and median temperature and humidity for that location and period and returns that to the user;
 - Extra goals:
 Provide a view which renders a bar chart for the requested data; e.g. Daily average temperature over the last 7 days
-- Additional Notes
+- Additional Notes:
 Optimize and fix any errors so the code works on local
 
 ## Backend Setup
