@@ -9,8 +9,7 @@ app = Flask(
 app.secret_key = app.config['SECRET_KEY']
 
 # setup configs
-env = os.environ.get('FLASK_ENV', 'development')
-
+env = os.environ.get('FLASK_ENV', 'develop')
 app.config['ENV'] = env
 app.config.from_pyfile('config/%s.cfg' % env)
 
