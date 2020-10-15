@@ -6,9 +6,13 @@ Project Question
 - Platform:
 Project (Weather API)
 - User story:
-As an API user I want to get min, max, average and median temperature and humidity for given city and period of time
-- Requirements:
-Use git for version control publish on GitHub or send us a compressed repo (I will set up a repository for each candidate) if making publicly available, please avoid using 'Yoyo Wallet' in repo name or description
+As an API user I want to get min, max, average and median temperature and humidity for given city and period of time and store the data in a database.
+- Requirements for submission:
+- Fork this Repository to get started.
+- Use git for version control. 
+- Publish your final codebase on a public GitHub repository or send us a compressed codebase with your answers, please avoid using 'Yoyo Wallet' in repo name or description
+- On completion email the details to wasim@opencitieslab.org
+
 - Functionality:
 - Create locally running RESTful web API;
 - Use the flask-framework provided on this repo, create an API that accepts a request with 'city' and 'period' args;
@@ -51,3 +55,7 @@ run 'python rebuild_db.py'
 ```
 run 'python app.py runserver'
 ```
+
+### Technical details
+- Python 3.6.*
+- PostgresSQL 9.6.*
