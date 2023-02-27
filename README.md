@@ -53,7 +53,4 @@ psql -U postgres
 =# GRANT ALL PRIVILEGES ON DATABASE stories TO stories;
 =# \q
 ```
-
-### Deploying database changes
-* datastories App uses Flask-Migrate (which uses Alembic) to handle database migrations.
   
