@@ -99,68 +99,6 @@ class LoginForm(Form):
     password = PasswordField('Password', validators=[InputRequired()])
 
 
-class ExtendedRegisterForm(RegisterForm):
-    first_name = StringField('First Name', validators=[Required()])
-    last_name = StringField('Last Name', validators=[Required()])
-
-
-class UserSet(db.Model):
-    """
-    A user's uploaded datasets
-    """
-    __tablename__ = "user_sets"
-
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, index=True, nullable=False, unique=False)
-    ds_name = Column(String(80), index=False, nullable=False, unique=False)
-    ds_title = Column(String(80), index=False, nullable=False, unique=False)
-    pk_id = Column(String(80), index=False, nullable=False, unique=False)
-    file_id = Column(String(80), index=True, nullable=False, unique=True)
-    description = Column(String(300), nullable=True)
-
-    def __repr__(self):
-        return "<Dataset='%s'>" % (self.ds_name)
-
-    @classmethod
-    def all(cls):
-        return cls.query.order_by(UserSet.ds_name).all()
-
-
-class UserAnalysis(db.Model):
-    """
-    A user's custom analyses
-    """
-    __tablename__ = "user_analyses"
-
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, index=True, nullable=False, unique=False)
-    ds_name = Column(String(80), index=False, nullable=False, unique=False)
-    description = Column(String(300), index=False, nullable=False, unique=False)
-    current = Column(JSON)
-    previous = Column(JSON)
-
-    def __repr__(self):
-        return "<Analysis-'%s'>" % (self.ds_name)
-
-    @classmethod
-    def all(cls):
-        return cls.query.order_by(UserAnalysis.ds_name).all()
-
-
-class NewAnalysisForm(Form):
-    ds_name = StringField('Filename', [validators.DataRequired()])
-    description = StringField('Filename', [validators.DataRequired()], widget=TextArea())
-
-    def __init__(self, *args, **kwargs):
-        super(NewAnalysisForm, self).__init__(*args, **kwargs)
-
-    def validate(self):
-        return super(NewAnalysisForm, self).validate()
-
-    def populate_obj(self, obj):
-        super(NewAnalysisForm, self).populate_obj(obj)
-
-
 class EmailForm(Form):
     description = StringField('Comment', [validators.DataRequired()], widget=TextArea())
 
