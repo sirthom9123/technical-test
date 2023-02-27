@@ -4,5 +4,9 @@ from sqlalchemy.sql import func
 from datastories.models import db
 
 @app.route('/')
-def home():
+def hello_world():
     return "Hello World"
+
+@app.route('/home')
+def home():
+    return render_template('index.html')

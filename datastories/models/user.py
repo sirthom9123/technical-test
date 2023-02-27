@@ -114,5 +114,3 @@ class EmailForm(Form):
 
 # user authentication
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
-app.extensions['security'].render_template = render_template
