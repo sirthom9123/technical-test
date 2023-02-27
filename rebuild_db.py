@@ -1,11 +1,5 @@
-from weather.models import db
-# Seeds
-from weather.models.seeds import seed_db
-
-# Initialize db
+from app import db
+from datastories.models.seeds import seed_db
 db.drop_all()
-db.configure_mappers()
 db.create_all()
-
-# Seeds
 seed_db(db)
