@@ -9,6 +9,8 @@ import plotly.graph_objs as gs
 
 @app.route('/', methods=['GET'])
 def home():    
+    """View to display overall data on bar chart
+    """
     locations = Location.query.all()
     
     temp_data = []
@@ -43,6 +45,41 @@ def home():
     
     return render_template('index.html', chart=chart_json)
 
+
+@app.route('/city-temperature-chart', methods=['GET'])
+def city_temp():
+    """View to display single locations data on bar chart
+    """
+    data = request.args
+    city = data.get('city')
+    location = Location.query.filter_by(name=city).first()
+    
+    temp_data = []
+    for item in location.weather:
+        results = {
+            "location": location.name,
+            "period": item.period,
+            "min_temp": item.min_temp,
+            "max_temp": item.max_temp,
+            "humidity": item.humidity,
+            "average": location.avg_temp,
+            "median": location.median_temp
+        }
+        temp_data.append(results)
+    
+    if not temp_data:
+        return jsonify({'status': 'error', 'message': 'No data found for the given city and period.'}), 404
+            
+    x = [data['period'] for data in temp_data]
+    y = [data['average'] for data in temp_data]
+    
+    data = gs.Bar(x=x, y=y)
+    layout = gs.Layout(title=f'Average Temperature for {city}')
+    figure = gs.Figure(data=[data], layout=layout)
+    
+    chart_json = figure.to_json()
+    
+    return render_template('city-chart.html', chart=chart_json)
 
 
 @app.route('/api/weather', methods=['POST'])
