@@ -16,9 +16,8 @@ from sqlalchemy.orm import relationship
 from flask_security import UserMixin, RoleMixin, Security, SQLAlchemyUserDatastore
 from flask_security import LoginForm as Form
 from flask_security import RegisterForm
-from wtforms.fields.html5 import EmailField
-from wtforms import StringField, PasswordField, validators, TextField
-from wtforms.validators import DataRequired, Length, InputRequired, Required
+from wtforms import StringField, PasswordField, validators, EmailField
+from wtforms.validators import DataRequired, Length, InputRequired
 from wtforms.widgets import TextArea
 
 
